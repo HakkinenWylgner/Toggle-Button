@@ -4,13 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
 
 public class MainActivity extends AppCompatActivity {
-
 
     private ToggleButton toggleSenha;
     private Switch switchSenha;
@@ -23,13 +23,26 @@ public class MainActivity extends AppCompatActivity {
         toggleSenha    = findViewById(R.id.toggleSenha);
         switchSenha    = findViewById(R.id.switchSenha);
         textResultado  = findViewById(R.id.textResultado);
+        adicionarListener();
+    }
+    public void adicionarListener() {
+        switchSenha.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
+                if (isChecked){
+                    textResultado.setText("Ligado");
+                }else {
+                    textResultado.setText("Desligado");
+                }
+            }
+        });
     }
     public void enviar (View view) {
-        if (toggleSenha.isChecked()) {
+        /*if (toggleSenha.isChecked()) {
             textResultado.setText("Switch ligado");
         } else {
             textResultado.setText("Switch desligado");
-        }
+        }*/
     }
 }
